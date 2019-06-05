@@ -7,20 +7,16 @@ import { PlayerForm, Player } from './player';
 @Injectable()
 export class TeamFormService {
   private teamForm: BehaviorSubject<FormGroup | undefined> =
-            new BehaviorSubject(this.fb.group(new TeamForm(new Team('Gators'))));
+    new BehaviorSubject(this.fb.group(new TeamForm(new Team('Gators'))));
   teamForm$: Observable<FormGroup> = this.teamForm.asObservable();
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   addPlayer() {
     const currentTeam = this.teamForm.getValue();
     const currentPlayers = currentTeam.get('players') as FormArray;
 
-    currentPlayers.push(
-      this.fb.group(
-        new PlayerForm(new Player())
-      )
-    );
+    currentPlayers.push(this.fb.group(new PlayerForm(new Player())));
     this.teamForm.next(currentTeam);
   }
 

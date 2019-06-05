@@ -19,9 +19,9 @@ export class TeamComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.teamFormSub = this.teamFormService.teamForm$
       .subscribe(team => {
-          this.teamForm = team;
-          this.players = this.teamForm.get('players') as FormArray;
-        });
+        this.teamForm = team;
+        this.players = this.teamForm.get('players') as FormArray;
+      });
   }
 
   ngOnDestroy() {
