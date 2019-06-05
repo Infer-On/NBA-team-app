@@ -1,6 +1,7 @@
 <form [formGroup]="teamForm"
   ngxsForm="team.teamForm"
   ngxsFormClearOnDestroy="true"
+  ngxsFormDebounce="300"
   >
   Team Name: {{teamForm.controls.name.value}}
 
