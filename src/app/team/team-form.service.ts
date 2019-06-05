@@ -6,8 +6,9 @@ import { PlayerForm, Player } from './player';
 
 @Injectable()
 export class TeamFormService {
-  private teamForm: BehaviorSubject<FormGroup | undefined> =
-    new BehaviorSubject(this.fb.group(new TeamForm(new Team('Gators'))));
+  private teamForm: BehaviorSubject<
+    FormGroup | undefined
+  > = new BehaviorSubject(this.fb.group(new TeamForm(new Team('Cavaliers'))));
   teamForm$: Observable<FormGroup> = this.teamForm.asObservable();
 
   constructor(private fb: FormBuilder) { }
@@ -16,14 +17,21 @@ export class TeamFormService {
     const currentTeam = this.teamForm.getValue();
     const currentPlayers = currentTeam.get('players') as FormArray;
 
-    currentPlayers.push(this.fb.group(new PlayerForm(new Player())));
+    currentPlayers.push(
+      this.fb.group(
+        new PlayerForm(new Player())
+      )
+    );
+
     this.teamForm.next(currentTeam);
   }
 
   deletePlayer(i: number) {
     const currentTeam = this.teamForm.getValue();
     const currentPlayers = currentTeam.get('players') as FormArray;
+
     currentPlayers.removeAt(i);
+
     this.teamForm.next(currentTeam);
   }
 }
