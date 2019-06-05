@@ -9,6 +9,9 @@ import { AppComponent } from './app.component'
 import { TeamComponent } from './team/team.component'
 import { PlayerComponent } from './team/player/player.component'
 import { TeamFormService } from './team/team-form.service'
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { TeamFormService } from './team/team-form.service'
     MatFormFieldModule,
     MatInputModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    NgxsModule.forRoot([]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsFormPluginModule.forRoot(),
   ],
   providers: [TeamFormService],
   bootstrap: [AppComponent]

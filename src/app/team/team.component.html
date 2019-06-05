@@ -1,4 +1,7 @@
-<form [formGroup]="teamForm" >
+<form [formGroup]="teamForm"
+  ngxsForm="team.teamForm"
+  ngxsFormClearOnDestroy="true"
+  >
   Team Name: {{teamForm.controls.name.value}}
 
   <p>Players:</p>
